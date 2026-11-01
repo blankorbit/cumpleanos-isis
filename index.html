@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160d2c">
+<title>Feliz cumpleaños, Isis 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #160d2c;
+    font-family: Arial, sans-serif;
+}
+
+/* PRIMERA PANTALLA */
+#portada {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #160d2c;
+}
+
+#fondo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ZONA INTERACTIVA DEL BOTÓN ABRIR */
+#abrir {
+    position: absolute;
+    left: 50%;
+    top: 78%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 16%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* SEGUNDA PANTALLA */
+#carta {
+    display: none;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #160d2c;
+}
+
+/* Fondo suave para los espacios laterales */
+#carta::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background-image: url("carta_isis.png");
+    background-position: center;
+    background-size: cover;
+    filter: blur(18px) brightness(0.45);
+}
+
+/* Imagen completa de Naruto y la carta */
+#imagenCarta {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* PANTALLA COMPLETA */
+#pantallaCompleta {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    padding: 11px 15px;
+    color: white;
+    background: #35204e;
+    border: 1px solid #ffd166;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    #abrir {
+        width: 68%;
+        height: 17%;
+        top: 78%;
+    }
+
+    #imagenCarta {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button id="pantallaCompleta" onclick="alternarPantalla()">
+    ⛶ Pantalla completa
+</button>
+
+<!-- PRIMERA PANTALLA: SOBRE -->
+<section id="portada">
+
+    <img
+        id="fondo"
+        src="fondo_isis.png"
+        alt="Fondo de la tarjeta de cumpleaños"
+    >
+
+    <button
+        id="abrir"
+        aria-label="Abrir la carta de cumpleaños"
+        onclick="abrirCarta()">
+    </button>
+
+</section>
+
+<!-- SEGUNDA PANTALLA: CARTA -->
+<section id="carta">
+
+    <img
+        id="imagenCarta"
+        src="carta_isis.png"
+        alt="Naruto felicitando a Isis y su carta de cumpleaños"
+    >
+
+</section>
+
+<script>
+
+// Abrir la carta
+function abrirCarta() {
+    document.getElementById("portada").style.display = "none";
+    document.getElementById("carta").style.display = "flex";
+}
+
+// Pantalla completa
+function alternarPantalla() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.();
+    } else {
+        document.exitFullscreen?.();
+    }
+}
+
+</script>
+
+</body>
+</html>
